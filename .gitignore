@@ -1,0 +1,12 @@
+#folder
+*/build
+
+#file
+*/CMakeLists.txt
+
+#vscode
+.vscode
+
+# Others
+
+
