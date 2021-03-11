@@ -2,39 +2,21 @@
 欧拉角的定义
 定义一个欧拉角，需要明确下面4条：旋转组合、旋转参考系、旋转角度、旋转方式。
 
-# 旋转组合：表示旋转的欧拉角旋转顺序有12种
-
-    Proper/classic Euler angle    z-x-z，x-y-x，y-z-y，z-y-z, x-z-x，y-x-y
-    Tait-Bryan angle    x-y-z，y-z-x，z-x-y，x-z-y，z-y-x，y-x-z
-
-# 旋转参考系：外在旋转：相对于固定的坐标系，内在旋转：相对于自身的坐标系
+## 旋转组合：表示旋转的欧拉角旋转顺序有12种
+Proper/classic Euler angle    z-x-z，x-y-x，y-z-y，z-y-z, x-z-x，y-x-y
+Tait-Bryan angle    x-y-z，y-z-x，z-x-y，x-z-y，z-y-x，y-x-z
+## 旋转参考系：外在旋转：相对于固定的坐标系，内在旋转：相对于自身的坐标系
 
 内部旋转（Z-Y-X）对应的旋转矩阵R_{wc}=R_{z}*R_{y}*R_{x}R_{wc}=R_{z}*R_{y}*R_{x}
 外部旋转（X-Y-Z）对应的旋转矩阵R_{wc}=R_{z}*R_{y}*R_{x}R_{wc}=R_{z}*R_{y}*R_{x}
 
-# 旋转角度：使用旋转角度是左手系（顺时针）还是右手系（逆时针）
-# 旋转方式：主动旋转（将向量逆时针围绕旋转轴旋转）还是被动旋转（对坐标轴进行的逆时针旋转）
+## 旋转角度：使用旋转角度是左手系（顺时针）还是右手系（逆时针）
+## 旋转方式：主动旋转（将向量逆时针围绕旋转轴旋转）还是被动旋转（对坐标轴进行的逆时针旋转）
 
 例如：坐标系w为初始坐标系，定义坐标系如下图，旋转角度使用右手系，采用主动旋转、外部旋转进行变换（slam14中采用内部旋转），先绕X轴转  α 角度，再绕Y轴转 β，再绕Z轴转 γ，则变换矩阵为
-R_{wc}=R_{z}*R_{y}*R_{x}=\left[\begin{array}{}
-  cos(\gamma)&-sin(\gamma)&0\\
-  sin(\gamma)&cos(\gamma)&0\\
-0&0&1\\
-\end{array}\right]*
-
-\left[\begin{array}{}
-  cos(\beta)&0&sin(\beta)\\
-0&1&0\\
-  -sin(\beta)&0&cos(\beta)\\
-\end{array}\right]*
-
-\left[\begin{array}{}
-0&0&1\\
-  0&cos(\alpha)&-sin(\alpha)\\
-  0&sin(\alpha)&cos(\alpha)\\
-\end{array}\right]R_{wc}=R_{z}*R_{y}*R_{x}
+R_{wc}=R_{z}*R_{y}*R_{x}=
 同一点在w坐标系下坐标为p，在c坐标系下为p'，则
- R_{wc}*p^{'}=p  
+ R_{wc}*p^{'}=p
  p^{'}=R_{wc}^{T}*pR_{wc}*p^{'}=p 
 同时注意，由于旋转矩阵为正交矩阵（每个行向量都是单位长的，并且任意两个行向量垂直，这和矩阵旋转向对应），因此矩阵的转置、矩阵的逆相等。
 
